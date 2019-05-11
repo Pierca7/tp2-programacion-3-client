@@ -1,23 +1,17 @@
 {
-  "name": "vis-webpack-demo",
+  "name": "tp-programacion-2-client",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "tsc && webpack-dev-server",
     "build": "NODE_ENV=production webpack -p --config webpack.config.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mojoaxel/vis-webpack-demo.git"
+    "url": ""
   },
   "keywords": [],
-  "author": "Alexander Wunschik <mail@wunschik.it>",
   "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/mojoaxel/vis-webpack-demo/issues"
-  },
-  "homepage": "https://github.com/mojoaxel/vis-webpack-demo#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
@@ -35,6 +29,10 @@
     "webpack-dev-server": "^2.11.3"
   },
   "dependencies": {
+    "@types/vis": "^4.21.15",
+    "ajv": "^6.10.0",
+    "moment": "^2.24.0",
+    "typescript": "^3.4.5",
     "vis": "^4.21.0"
   }
 }
