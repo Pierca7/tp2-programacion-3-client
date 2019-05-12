@@ -21,14 +21,15 @@ class GraphGenerator {
           }
         },
         edges: {
-            width: 50,
+            width: 2,
             scaling: {
-                min: 2,
-                max: 2
+                min: 1,
+                max: 1
             },
-            color:{
-                color: "#000000"
-            }
+            color: {
+                inherit: false
+            },
+            
         },
         physics: {
             repulsion: {
@@ -95,6 +96,19 @@ class GraphGenerator {
             }
             explored.add(nextNode);
         }
+        mstEdges.forEach(id => {
+            const index = this._edges.findIndex(edge => edge.id === id);
+            this._edges[index].shadow = {
+                color:"#FF0000",
+                enabled: true,
+                size: 10,
+                x: 0,
+                y: 0
+            };
+        })
+        console.log(this._edges)
+        this._network.destroy();
+        this.createGraph();
     }
 
     private _getNodeEdges(nodeId: IdType): ConnectedEdge[] {
@@ -149,7 +163,8 @@ class GraphGenerator {
                 id: "e3",
                 from: 3,
                 to: 4,
-                value: this._generateRandomInteger()
+                value: this._generateRandomInteger(),
+                color: "#FF0000"
             },
             {
                 id: "e4",
