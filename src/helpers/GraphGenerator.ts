@@ -106,7 +106,6 @@ class GraphGenerator {
                 y: 0
             };
         })
-        console.log(this._edges)
         this._network.destroy();
         this.createGraph();
     }
@@ -164,7 +163,6 @@ class GraphGenerator {
                 from: 3,
                 to: 4,
                 value: this._generateRandomInteger(),
-                color: "#FF0000"
             },
             {
                 id: "e4",
@@ -228,7 +226,7 @@ class GraphGenerator {
             },
         ])
         this._edges.forEach(edge => {
-            edge.label = `${edge.id}\n${edge.value.toString()}`;
+            edge.label = edge.value.toString();
             edge.connectedNodes = [edge.from, edge.to];
         });
     }
