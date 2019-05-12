@@ -33,6 +33,13 @@ var config = {
         query: {
           presets: [ "babel-preset-es2015" ].map(require.resolve)
         }
+      },
+      {
+        test: /\.ts$/,
+        loader: 'babel-loader',
+        query: {
+          presets: [ "babel-preset-es2015" ].map(require.resolve)
+        }
       }, {
         test: /\.css$/,
         use: [

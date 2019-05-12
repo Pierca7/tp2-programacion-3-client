@@ -3,9 +3,10 @@
         "module": "ES6",
         "noImplicitAny": true,
         "outDir": "src/bin",
+        "lib":["es7", "dom"]
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts", "src/helpers/FastPriorityQueue.js"
     ],
     "exclude": [
         "node_modules",

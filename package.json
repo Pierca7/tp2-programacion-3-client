@@ -31,6 +31,7 @@
   "dependencies": {
     "@types/vis": "^4.21.15",
     "ajv": "^6.10.0",
+    "fastpriorityqueue": "^0.6.3",
     "moment": "^2.24.0",
     "typescript": "^3.4.5",
     "vis": "^4.21.0"
