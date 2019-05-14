@@ -43,22 +43,34 @@ class GraphGenerator {
         }
     };
     private readonly nodeAmount = 9;
+
     private _agents: Agent[] = [];
     private _edges: ConnectedEdge[] = [];
     private _network: Network;
+    private _isTest: boolean;
     
-    constructor() {
+    constructor(isTest?: boolean) {
+        this._isTest = isTest;
         this._createNodes();
         this._createEdges();
+        this._generateStadistics();
+    }
+
+    public getAgents(): Agent[] {
+        return this._agents;
+    }
+
+    public getEdges(): ConnectedEdge[] {
+        return this._edges;
     }
 
     public createGraph(): void {
-        const container = document.getElementById("mynetwork");
+        const container = (!this._isTest)? document.getElementById("mynetwork") : {} as HTMLElement;
         const data: Data = {
             nodes: new DataSet(this._agents),
             edges: new DataSet(this._edges)
         };
-        this._network = new Network(container, data, this._options);
+        this._network = (!this._isTest)? new Network(container, data, this._options) : {} as Network;
     }
 
     public generateMinimumSpanningTree() {
@@ -233,6 +245,28 @@ class GraphGenerator {
 
     private _generateRandomInteger(): number {
         return Math.floor(Math.random() * 100) + 1
+    }
+
+    private _generateStadistics(): void {
+        let pesoTotal: number = 0;
+        let pesoMin: number;
+        let pesoMax: number = 0;  
+        
+        this._edges.forEach(edge => {
+            pesoTotal += edge.value;
+
+            if (!pesoMin || pesoMin > edge.value) {
+                pesoMin = edge.value;
+            }
+
+            if (pesoMax < edge.value) {
+                pesoMax = edge.value;
+            }
+        });
+
+        document.getElementById("pesoTotal").innerText = `Peso total: ${pesoTotal.toString()}`;
+        document.getElementById("pesoMinimo").innerText = `Peso minimo: ${pesoMin.toString()}`;
+        document.getElementById("pesoMaximo").innerText = `Peso maximo: ${pesoMax.toString()}`;
     }
 }
 

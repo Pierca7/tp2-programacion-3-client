@@ -8,10 +8,6 @@ export interface QueueElement<T> {
  */
 export default class PriorityQueue<T> {
     private _elements: QueueElement<T>[] = [];
-    
-    constructor(){
-        
-    }
 
     public enqueue(value: T, priority: number): void {
         this._elements.push({
